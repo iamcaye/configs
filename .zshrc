@@ -10,7 +10,7 @@ autoload -U colors && colors
 #PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
 
 #PS1='%(?.%F{green}.%F{red}[%?])%f %B%F{green}%1~ %B%F{blue}>%f%b ' 
-PS1='%(?.%F{green}.%F{red}[%?])%f %B%F{white}%n %B%F{red}:: %B%F{green}%~ %B%F{blue}'$'\U00BB''%f%b ' 
+PS1='%B%F{white}%n %B%F{red}:: %B%F{green}%~ %(?.%F{green}.%F{red}%?)%f %B%F{blue}'$'\U00BB''%f%b ' 
 
 
 # History in cache directory:
