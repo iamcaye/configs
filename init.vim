@@ -185,3 +185,6 @@ highlight iCursor guifg=gray guibg=gray
 set guicursor=n-v-c-i:block-Cursor
 set guicursor+=n-v-c:blinkon0
 set guicursor+=i:blinkon1
+
+highlight Normal ctermfg=grey ctermbg=black
+
