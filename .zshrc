@@ -81,6 +81,9 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 [ -f "$HOME/.config/aliasrc" ] && source "$HOME/.config/aliasrc"
 [ -f "$HOME/.bash_aliases" ] && source "$HOME/.bash_aliases"
 
+# Load colors
+[[ -e $HOME/.dircolors ]] && eval "`dircolors --sh $HOME/.dircolors`"
+
 # Load zsh-syntax-highlighting; should be last.
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
 
