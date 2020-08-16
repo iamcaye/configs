@@ -39,7 +39,7 @@ call vundle#begin()		" required, all plugins must appear after this line.
 
 call vundle#end()		" required, all plugins must appear before this line.
 
-colorscheme onedark
+colorscheme ron
 
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
@@ -185,3 +185,6 @@ highlight iCursor guifg=gray guibg=gray
 set guicursor=n-v-c-i:block-Cursor
 set guicursor+=n-v-c:blinkon0
 set guicursor+=i:blinkon1
+
+highlight Normal ctermfg=grey ctermbg=none
+
