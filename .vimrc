@@ -6,15 +6,16 @@
 
 call plug#begin()
 
-Plug 'itchyny/lightline.vim'
 Plug 'preservim/nerdtree'
 Plug 'chrisbra/unicode.vim'
 Plug 'vim-python/python-syntax'
+Plug 'flazz/vim-colorschemes'
 
 call plug#end()
 
-set laststatus=2
-set noshowmode
+set laststatus=1
+
+colorscheme Atelier_DuneDark
 
 
 if v:progname =~? "evim"
@@ -66,12 +67,12 @@ if has('syntax') && has('eval')
   packadd! matchit
 endif
 
-set mouse=nicr
+set mouse=a
 
 set nobackup
 set noundofile
 set noswapfile
-set number relativenumber
+set number
 
 "VIM KEYMAPS
 inoremap { {}<Esc>i
@@ -85,3 +86,11 @@ map <C-i> :vs<CR>
 inoremap ºº <Esc>
 inoremap ç <Esc>
 
+set shiftwidth=2                " One tab == four spaces.
+set tabstop=2                   " One tab == four spaces.
+
+" Remap splits navigation to just CTRL + hjkl
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l

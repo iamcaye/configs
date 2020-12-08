@@ -1,6 +1,7 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Vundle For Managing Plugins
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -9,13 +10,13 @@ filetype off                  " required
 set rtp+=~/.vim/bundle/Vundle.vim
 
 call vundle#begin()		" required, all plugins must appear after this line.
+    Plugin 'StanAngeloff/php.vim'
+    Plugin 'NLKNguyen/c-syntax.vim'
     Plugin 'mxw/vim-jsx'
     Plugin 'pangloss/vim-javascript'
     Plugin 'joshdick/onedark.vim'
-    Plugin 'prettier/vim-prettier'
 "{{ The Basics }}
     Plugin 'gmarik/Vundle.vim'                           " Vundle
-    Plugin 'suan/vim-instant-markdown', {'rtp': 'after'} " Markdown Preview
     Plugin 'frazrepo/vim-rainbow'
 "{{ File management }}
     Plugin 'vifm/vifm.vim'                               " Vifm
@@ -28,7 +29,6 @@ call vundle#begin()		" required, all plugins must appear after this line.
 "{{ Tim Pope Plugins }}
     Plugin 'tpope/vim-surround'                          " Change surrounding marks
 "{{ Syntax Highlighting and Colors }}
-    Plugin 'kovetskiy/sxhkd-vim'                         " sxhkd highlighting
     Plugin 'vim-python/python-syntax'                    " Python highlighting
     Plugin 'ap/vim-css-color'                            " Color previews for CSS
 "{{ Junegunn Choi Plugins }}
@@ -49,9 +49,10 @@ let g:zenmode_background = "dark"
 let g:zenmode_colorscheme = "onedark"
 let g:zenmode_font ="Ubuntu Mono Nerd Font 12"
 
-filetype plugin indent on    " required
+"filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
-" filetype plugin on
+ "filetype plugin on
+ syntax on
 
 " Brief help
 " :PluginList       - lists configured plugins
@@ -72,8 +73,10 @@ set nobackup                    " No auto backups
 set noswapfile                  " No swap
 set t_Co=256                    " Set if term supports 256 colors.
 set number                      " Display line numbers
-syntax enable
 let g:rehash256 = 1
+let mapleader = 'ç'
+
+set laststatus=2
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Remap Keys
@@ -89,11 +92,6 @@ imap { {}<Esc>i
 imap [ []<Esc>i
 map <C-k> :noh<CR>
 
-" Always show statusline
-set laststatus=1
-
-" Uncomment to prevent non-normal modes showing in powerline and below powerline.
-set showmode
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related
@@ -126,15 +124,9 @@ map <Leader>dv :DiffVifm<CR>
 map <Leader>tv :TabVifm<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => VimWiki
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:vimwiki_list = [{'path': '~/vimwiki/',
-                      \ 'syntax': 'markdown', 'ext': '.md'}]
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Vim-Instant-Markdown
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:instant_markdown_autostart = 0         " Turns off auto preview
+"let g:instant_markdown_autostart = 0         " Turns off auto preview
 let g:instant_markdown_browser = "surf"      " Uses surf for preview
 map <Leader>md :InstantMarkdownPreview<CR>   " Previews .md file
 map <Leader>ms :InstantMarkdownStop<CR>      " Kills the preview
@@ -171,27 +163,18 @@ map <Leader>th <C-w>t<C-w>H
 map <Leader>tk <C-w>t<C-w>K
 
 " Removes pipes | that act as seperators on splits
-set fillchars+=vert:\ 
+"set fillchars+=vert:\ 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Other Stuff
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:python_highlight_all = 1
-
-au! BufRead,BufWrite,BufWritePost,BufNewFile *.org 
-au BufEnter *.org            call org#SetOrgFileType()
-
-set guioptions-=m  "remove menu bar
-set guioptions-=T  "remove toolbar
-set guioptions-=r  "remove right-hand scroll bar
-set guioptions-=L  "remove left-hand scroll bar
-
-packloadall
 
 highlight Cursor guifg=white guibg=black
 highlight iCursor guifg=gray guibg=gray
 set guicursor=n-v-c-i:block-Cursor
 set guicursor=i:blinkwait700-blinkon400-blinkoff250
 
-highlight Normal ctermfg=grey ctermbg=none
-
+highlight Normal ctermfg=lightgray ctermbg=none
+filetype plugin on
+au BufNewFile,BufRead *.endfile set filetype=endfile
+filetype plugin indent on
