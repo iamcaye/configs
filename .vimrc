@@ -6,17 +6,28 @@
 
 call plug#begin()
 
+Plug 'kassio/neoterm'
+Plug 'frazrepo/vim-rainbow'
+Plug 'pangloss/vim-javascript'
+Plug 'NLKNguyen/c-syntax.vim'
 Plug 'preservim/nerdtree'
 Plug 'chrisbra/unicode.vim'
 Plug 'vim-python/python-syntax'
 Plug 'flazz/vim-colorschemes'
+Plug 'joshdick/onedark.vim'
 
 call plug#end()
 
 set laststatus=1
 
-colorscheme Atelier_DuneDark
+"colorscheme Atelier_DuneDark
+colorscheme onedark
+let &runtimepath.=',~/.vim/bundle/neoterm'
 
+" Parentesis bonitos
+let g:rainbow_active = 1
+let g:rainbow_guifgs = ['RoyalBlue3', 'DarkOrange3', 'DarkOrchid3', 'FireBrick']
+let g:rainbow_ctermfgs = ['lightblue', 'lightgreen', 'yellow', 'red', 'magenta']
 
 if v:progname =~? "evim"
   finish
@@ -67,8 +78,6 @@ if has('syntax') && has('eval')
   packadd! matchit
 endif
 
-set mouse=a
-
 set nobackup
 set noundofile
 set noswapfile
@@ -77,6 +86,7 @@ set number
 "VIM KEYMAPS
 inoremap { {}<Esc>i
 inoremap [ []<Esc>i
+
 
 map <C-n> :NERDTreeToggle<CR>
 map <C-m> :!gcc -std=c99 -o
@@ -89,8 +99,12 @@ inoremap ç <Esc>
 set shiftwidth=2                " One tab == four spaces.
 set tabstop=2                   " One tab == four spaces.
 
+
+set splitbelow splitright
 " Remap splits navigation to just CTRL + hjkl
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+
+highlight Normal ctermfg=lightgray ctermbg=none

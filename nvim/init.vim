@@ -51,7 +51,7 @@ let g:zenmode_font ="Ubuntu Mono Nerd Font 12"
 
 "filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
- "filetype plugin on
+ filetype plugin on
  syntax on
 
 " Brief help
@@ -76,7 +76,7 @@ set number                      " Display line numbers
 let g:rehash256 = 1
 let mapleader = 'ç'
 
-set laststatus=2
+set laststatus=1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Remap Keys
@@ -175,6 +175,3 @@ set guicursor=n-v-c-i:block-Cursor
 set guicursor=i:blinkwait700-blinkon400-blinkoff250
 
 highlight Normal ctermfg=lightgray ctermbg=none
-filetype plugin on
-au BufNewFile,BufRead *.endfile set filetype=endfile
-filetype plugin indent on
