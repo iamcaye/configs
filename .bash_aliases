@@ -1,4 +1,4 @@
-## This is the alias file
+### This is the alias file
 
 # APT aliases
 alias sa='sudo apt'
@@ -6,28 +6,15 @@ alias sai='sudo apt install'
 alias sar='sudo apt remove'
 
 # RC files
-alias vmrc='vim ~/.vimrc'
-alias nvmrc='nvim ~/.config/nvim/init.vim'
-alias bshrc='vim ~/.bashrc'
-alias chalias='vim ~/.bash_aliases'
-alias dwmrc='vim ~/dwm/config.h'
+alias bshrc='v ~/.bashrc'
+alias vmrc='v ~/.vimrc'
+alias chalias='v ~/.bash_aliases'
 
-# Compiler alias
-alias g='gcc'
-alias g99='gcc -std=c99'
-alias go='gcc -o'
-alias go99='gcc -std=c99 -o'
+# Other files
+alias home='cd /mnt/c/Users/cayet/'
 
-alias gpo='g++ -o'
-
-alias p3='python3'
-
-# Usual folders i use
-alias fsc='cd ~/Documents/fsc'
-alias prj='cd ~/Documents/projects/pyteam'
-
-alias sdn='sudo shutdown now'
-
-alias killl='kill -KILL'
-
-alias v='nvim'
+alias ls='ls --color'
+alias ll='ls -lah'
+alias la='ls -a'
+alias l='ls'
+alias v='vim'
