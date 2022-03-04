@@ -8,20 +8,24 @@ call plug#begin()
 
 Plug 'kassio/neoterm'
 Plug 'frazrepo/vim-rainbow'
-Plug 'pangloss/vim-javascript'
 Plug 'NLKNguyen/c-syntax.vim'
 Plug 'preservim/nerdtree'
 Plug 'chrisbra/unicode.vim'
 Plug 'vim-python/python-syntax'
-Plug 'flazz/vim-colorschemes'
-Plug 'joshdick/onedark.vim'
+Plug 'morhetz/gruvbox'
+" Javascript & Typescript
+Plug 'pangloss/vim-javascript'
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
+Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
+Plug 'jparise/vim-graphql'
 
 call plug#end()
 
 set laststatus=1
+colo gruvbox
+set bg=dark
 
-"colorscheme Atelier_DuneDark
-colorscheme onedark
 let &runtimepath.=',~/.vim/bundle/neoterm'
 
 " Parentesis bonitos
@@ -107,4 +111,5 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
-highlight Normal ctermfg=lightgray ctermbg=none
+let g:python_recommended_style = 0
+
