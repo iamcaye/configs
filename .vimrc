@@ -112,4 +112,4 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
 let g:python_recommended_style = 0
-
+highlight Normal ctermbg=black
