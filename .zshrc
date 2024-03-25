@@ -10,13 +10,29 @@ function parse_git_branch() {
     git branch 2> /dev/null | sed -n -e 's/^\* \(.*\)/[\1] /p'
 }
 
+function git_prompt() {
+    local git_status
+    git_status="$(git status 2>/dev/null)"
+
+    if [[ $? -eq 0 ]]; then
+        if [[ $status =~ "working tree clean" ]]; then
+            echo -e "%F{green}✔ "
+        else
+            echo -e "%F{red}✘ "
+        fi
+    else
+        echo ""
+    fi
+}
+
+
 COLOR_DEF=$'%f'
 COLOR_USR=$'%F{white}'
 COLOR_DIR=$'%F{197}'
 COLOR_GIT=$'%F{39}'
-DOLLAR=$'%F{yellow}'
+YELLOW=$'%F{yellow}'
 setopt PROMPT_SUBST
-PS1='${COLOR_USR}%n ${COLOR_DIR}%~ ${COLOR_GIT}$(parse_git_branch)${DOLAR}${COLOR_DEF}'
+PS1='${COLOR_USR}%n ${COLOR_DIR}%~ ${COLOR_GIT}$(parse_git_branch)$(git_prompt)${YELLOW}$ ${COLOR_DEF}'
 
 
 # History in cache directory:
