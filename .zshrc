@@ -15,10 +15,17 @@ function git_prompt() {
     git_status="$(git status 2>/dev/null)"
 
     if [[ $? -eq 0 ]]; then
-        if [[ $status =~ "working tree clean" ]]; then
-            echo -e "%F{green}✔ "
+        if [[ $git_status =~ "working tree clean" ]]; then
+            echo -e ""
         else
-            echo -e "%F{red}✘ "
+            local modified 
+            modified=$(git status --porcelain | grep -c "M")
+            local added
+            added=$(git status --porcelain | grep -c "A")
+            local deleted
+            deleted=$(git status --porcelain | grep -c "D")
+
+            echo -e "%F{red}(~${modified} +${added} -${deleted})${COLOR_DEF} "
         fi
     else
         echo ""
