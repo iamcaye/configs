@@ -19,11 +19,11 @@ function git_prompt() {
             echo -e "✅ "
         else
             local modified 
-            modified=$(git status --porcelain | grep -c "M")
+            modified=$(git status --porcelain | grep -c "^ M")
             local added
-            added=$(git status --porcelain | grep -c "A")
+            added=$(git status --porcelain | grep -c "^??")
             local deleted
-            deleted=$(git status --porcelain | grep -c "D")
+            deleted=$(git status --porcelain | grep -c "^ D")
 
             echo -e "%F{red}(~${modified} +${added} -${deleted})${COLOR_DEF} "
         fi
