@@ -1,10 +1,22 @@
 # Enable colors and change prompt:
 autoload -U colors && colors
-PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
-#PS1='%F{111}%m:%F{2}%~ $%f '   
+# PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
+#PS1='%F{111}%m:%F{2}%~ $%f '
 
-#PS1='%(?.%F{green}.%F{red}[%?])%f %B%F{green}%1~ %B%F{blue}>%f%b ' 
-#PS1='%B%F{white}%n %B%F{red}:: %B%F{green}%~ %(?.%F{green}.%F{red}%? )%f%B%F{blue}'$'\U00BB''%f%b ' 
+#PS1='%(?.%F{green}.%F{red}[%?])%f %B%F{green}%1~ %B%F{blue}>%f%b '
+#PS1='%B%F{white}%n%B%F{red}::%B%F{green}%~ %(?.%F{green}.%F{red}%? )%f%B%F{blue}'$'\U00BB''%f%b '
+
+function parse_git_branch() {
+    git branch 2> /dev/null | sed -n -e 's/^\* \(.*\)/[\1] /p'
+}
+
+COLOR_DEF=$'%f'
+COLOR_USR=$'%F{white}'
+COLOR_DIR=$'%F{197}'
+COLOR_GIT=$'%F{39}'
+DOLLAR=$'%F{yellow}'
+setopt PROMPT_SUBST
+PS1='${COLOR_USR}%n ${COLOR_DIR}%~ ${COLOR_GIT}$(parse_git_branch)${DOLAR}${COLOR_DEF}'
 
 
 # History in cache directory:
@@ -89,3 +101,26 @@ export SCREENDIR=$HOME/.screen
 export GEM_HOME="$HOME/gems"
 export PATH="$HOME/gems/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# pnpm
+export PNPM_HOME="/home/cbiehler/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
+# Go installation
+export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:$HOME/go/bin
+
+# bun completions
+[ -s "/home/cbiehler/.bun/_bun" ] && source "/home/cbiehler/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
