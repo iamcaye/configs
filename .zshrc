@@ -16,7 +16,7 @@ function git_prompt() {
 
     if [[ $? -eq 0 ]]; then
         if [[ $git_status =~ "working tree clean" ]]; then
-            echo -e ""
+            echo -e "✅ "
         else
             local modified 
             modified=$(git status --porcelain | grep -c "M")
