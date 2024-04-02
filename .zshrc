@@ -11,24 +11,32 @@ function parse_git_branch() {
 }
 
 function git_prompt() {
-    local git_status
-    git_status="$(git status 2>/dev/null)"
-
-    if [[ $? -eq 0 ]]; then
-        if [[ $git_status =~ "working tree clean" ]]; then
-            echo -e "✅ "
-        else
-            local modified 
-            modified=$(git status --porcelain | grep -c "^ M")
-            local added
-            added=$(git status --porcelain | grep -c "^??")
-            local deleted
-            deleted=$(git status --porcelain | grep -c "^ D")
-
-            echo -e "%F{red}(~${modified} +${added} -${deleted})${COLOR_DEF} "
-        fi
-    else
+    # if the curret working directory starts with /mnt/ return ''
+    current_dir=$(pwd)
+    if [[ $current_dir == /mnt/* ]]; then
         echo ""
+
+    else
+
+        local git_status
+        git_status="$(git status 2>/dev/null)"
+
+        if [[ $? -eq 0 ]]; then
+            if [[ $git_status =~ "working tree clean" ]]; then
+                echo -e "✅ "
+            else
+                local modified 
+                modified=$(git status --porcelain | grep -c "^ M")
+                local added
+                added=$(git status --porcelain | grep -c "^??")
+                local deleted
+                deleted=$(git status --porcelain | grep -c "^ D")
+
+                echo -e "%F{red}(~${modified} +${added} -${deleted})${COLOR_DEF} "
+            fi
+        else
+            echo ""
+        fi
     fi
 }
 
